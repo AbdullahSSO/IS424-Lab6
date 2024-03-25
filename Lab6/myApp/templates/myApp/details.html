@@ -1,0 +1,23 @@
+{%extends "myApp/layout.html"%}
+
+{%block body%}
+    <h1>{{stu.FirstName}}</h1>
+
+    <form action="{% url 'myApp:details' stu.SID %}" method="post">
+        {%csrf_token%}
+        <select name="course" >
+            {%for c in nonCourse%}
+             <option value="{{c.CID}}">{{c}}</option>
+            {%endfor%}
+        </select>
+        <input type="submit" value="Add Course">
+        </form>
+
+        <ul>
+        {% for course in allcourses%}
+            <li>{{course.CID}}</li>
+        {%endfor%}    
+        </ul>
+
+        <a href="{% url 'myApp:index'%}">Show all student</a>
+{%endblock%}

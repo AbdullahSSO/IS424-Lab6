@@ -1,0 +1,13 @@
+{%extends "myApp/layout.html"%}
+
+    {%block body%}
+    <h1>All students</h1>
+    <ul>
+    {% for s in stu%}
+        <li><a href="{% url 'myApp:details' s.SID %}">ID: {{s.SID}}</a>,  Name: {{s.FirstName}}</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'myApp:createStu' %}">Add a Student</a>
+    <a style="margin-left: 20px;" href="{% url 'myApp:createCou' %}">Add a Course</a>
+
+    {%endblock%}
